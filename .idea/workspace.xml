@@ -20,9 +20,19 @@
   <component name="FavoritesManager">
     <favorites_list name="clicandpickangularjs" />
   </component>
+  <component name="FileEditorManager">
+    <leaf />
+  </component>
   <component name="GradleLocalSettings">
     <option name="externalProjectsViewState">
       <projects_view />
+    </option>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/.gitignore" />
+      </list>
     </option>
   </component>
   <component name="JsBuildToolGruntFileManager" detection-done="true">
@@ -200,12 +210,12 @@
       <created>1435867331993</created>
       <option name="number" value="Default" />
       <updated>1435867331993</updated>
-      <workItem from="1435867333120" duration="71000" />
+      <workItem from="1435867333120" duration="455000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="71000" />
+    <option name="totallyTimeSpent" value="455000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-6" y="-6" width="1932" height="1052" extended-state="6" />
@@ -243,5 +253,15 @@
   <component name="XDebuggerManager">
     <breakpoint-manager />
     <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
   </component>
 </project>
