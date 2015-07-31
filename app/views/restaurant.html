@@ -1,0 +1,22 @@
+<div data-ng-controller="RestaurantCtrl">
+    <div ng-repeat="type in ['starter', 'dish', 'dessert', 'drink']">
+        {{types[$index]}}
+        <ul>
+            <li ng-repeat="m in menu | filter:{type: type} as results">
+                <img ng-if="type != 'drink'" ng-src="{{m.img}}" alt="{{m.name}}-img"/>
+                {{ m.name }}
+                <a href="" ng-click="cart.add(m.id, m.name, m.price, 1)">
+                    add to cart
+                </a>
+            </li>
+            <li ng-if="results.length == 0">
+                <strong>No {{type}} found...</strong>
+            </li>
+        </ul>
+    </div>
+    <a href="/#/cart" title="go to shopping cart" ng-disabled="cart.getTotalCount() < 1">
+        <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
+        <b>{{cart.getTotalCount()}}</b> items, <b>{{cart.getTotalPrice() | currency}}</b>
+    </a>
+
+</div>

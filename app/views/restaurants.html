@@ -1,0 +1,16 @@
+<div data-ng-controller="RestaurantsCtrl">
+    <div ng-repeat="type in types" class="checkbox">
+        <label><input type="checkbox" ng-click="addType('{{type}}')">{{type}}</label>
+    </div>
+    <ul>
+        <li ng-repeat="restaurant in restaurants | filter:selectedTypesFilter as results">
+            <img ng-src="{{restaurant.img}}" alt="{{restaurant.name}}-img"/>
+            <a href="/#/restaurants/{{restaurant.id}}">{{restaurant.name}} <span class="glyphicon glyphicon-menu-right"
+                                                                                 aria-hidden="true"></span></a>
+        </li>
+        <li ng-if="results.length == 0">
+            <strong>No results found...</strong>
+        </li>
+
+    </ul>
+</div>

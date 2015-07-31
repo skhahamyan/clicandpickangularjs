@@ -1,0 +1,36 @@
+<div data-ng-controller="CartCtrl">
+
+    <!-- empty cart message -->
+    <div ng-hide="cart.getTotalCount() > 0">
+        Your cart is empty.
+    </div>
+
+    <!-- cart items -->
+    <ul>
+        <li ng-repeat="item in cart.items | orderBy:'name'">
+            <td>{{item.name}}</td>
+            <input
+                    type="tel"
+                    ng-model="item.quantity"
+                    ng-change="cart.saveItems()"/>
+            <button
+                    type="button"
+                    ng-disabled="item.quantity >= 1000"
+                    ng-click="cart.add(item.id, item.name, item.price, +1)">+
+            </button>
+            <button
+                    type="button"
+                    ng-disabled="item.quantity <= 0"
+                    ng-click="cart.add(item.id, item.name, item.price, -1)">-
+            </button>
+            {{item.price * item.quantity | currency}}
+            <a href="" ng-click="cart.addItem(item.id, item.name, item.price, -10000000)">
+                <i class="icon-remove"/>
+            </a>
+        </li>
+    </ul>
+
+    {{cart.getTotalCount()}} items, {{cart.getTotalPrice() | currency}}
+
+
+</div>

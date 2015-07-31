@@ -8,10 +8,9 @@
  * Controller of the clicandpickangularjsApp
  */
 angular.module('clicandpickangularjsApp')
-  .controller('MainCtrl', function () {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
-  });
+    .controller('MainCtrl', ['$window', '$scope', function ($window, $scope) {
+        $scope.search = function() {
+            $window.location.href = '#/s/' + $scope.where + " - " + $scope.when;
+        };
+    }]
+);
