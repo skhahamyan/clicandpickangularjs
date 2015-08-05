@@ -2,7 +2,7 @@
  * Created by Marc on 31/07/2015.
  */
 
-function ShoppingCart(){
+function ShoppingCart() {
     this.items = [];
 
     // load items from local storage when initializing
@@ -12,7 +12,7 @@ function ShoppingCart(){
     var self = this;
     $(window).unload(function () {
         if (self.clearCart) {
-            self.clearItems();
+            self.clear();
         }
         self.saveItems();
         self.clearCart = false;
@@ -36,14 +36,14 @@ ShoppingCart.prototype.loadItems = function () {
             // ignore errors while loading...
         }
     }
-}
+};
 
 // save items to local storage
 ShoppingCart.prototype.saveItems = function () {
     if (localStorage != null && JSON != null) {
         localStorage["clicAndPick_cart"] = JSON.stringify(this.items);
     }
-}
+};
 
 // adds an item to the cart
 ShoppingCart.prototype.add = function (id, name, price, quantity, data) {
@@ -72,42 +72,37 @@ ShoppingCart.prototype.add = function (id, name, price, quantity, data) {
         // save changes
         this.saveItems();
     }
-}
+};
 
 ShoppingCart.prototype.removeItem = function (index) {
     this.items.splice(index, 1);
 };
 
 // get the total price for all items currently in the cart
-ShoppingCart.prototype.getTotalPrice = function (sku) {
+ShoppingCart.prototype.getTotalPrice = function () {
     var total = 0;
-    for (var i = 0; i < this.items.length; i++) {
-        var item = this.items[i];
-        if (sku == null || item.sku == sku) {
-            total += this.toNumber(item.quantity * item.price);
-        }
-    }
-    return total;
-}
+    angular.forEach(this.items, function (item) {
+        total += item.getTotal();
+    });
+    return +parseFloat(total).toFixed(2);
+};
 
 // get the total number of items currently in the cart
-ShoppingCart.prototype.getTotalCount = function (sku) {
+ShoppingCart.prototype.getTotalCount = function () {
     var count = 0;
-    for (var i = 0; i < this.items.length; i++) {
-        var item = this.items[i];
-        if (sku == null || item.sku == sku) {
-            count += this.toNumber(item.quantity);
-        }
-    }
+    angular.forEach(this.items, function (item) {
+        count += item.quantity;
+    });
     return count;
-}
+};
+
 // clear the cart
 ShoppingCart.prototype.clear = function () {
     this.items = [];
     this.saveItems();
-}
+};
 
 ShoppingCart.prototype.toNumber = function (value) {
     value = value * 1;
     return isNaN(value) ? 0 : value;
-}
+};

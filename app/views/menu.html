@@ -1,0 +1,45 @@
+<div data-ng-controller="MenuCtrl">
+    <div ng-show="showStarters">
+        <h2>Entrées</h2>
+        <ul>
+            <li ng-repeat="m in menu.options.starters">
+                <img ng-src="{{m.img}}" alt="{{m.name}}-img"/>
+                {{ m.name }}
+                <a ng-click="chooseStarter(m)" >choose</a>
+            </li>
+        </ul>
+    </div>
+
+    <div ng-show="showDishes">
+        <h2>Plats</h2>
+        <ul>
+            <li ng-repeat="m in menu.options.dishes">
+                <img ng-src="{{m.img}}" alt="{{m.name}}-img"/>
+                {{ m.name }}
+                <a ng-click="chooseDish(m)" >choose</a>
+            </li>
+        </ul>
+    </div>
+
+    <div ng-show="showDesserts">
+        <h2>Desserts</h2>
+        <ul>
+            <li ng-repeat="m in menu.options.desserts">
+                <img ng-src="{{m.img}}" alt="{{m.name}}-img"/>
+                {{ m.name }}
+                <a ng-click="chooseDessert(m)" >choose</a>
+            </li>
+        </ul>
+    </div>
+
+    <div ng-show="showDrinks">
+        <h2>Boissons</h2>
+        <ul>
+            <li ng-repeat="m in menu.options.drinks">
+                {{ m.name }}
+                <a ng-click="chooseDrink(m)" >choose</a>
+
+            </li>
+        </ul>
+    </div>
+</div>

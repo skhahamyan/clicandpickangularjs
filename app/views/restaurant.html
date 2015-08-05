@@ -1,19 +1,67 @@
 <div data-ng-controller="RestaurantCtrl">
-    <div ng-repeat="type in ['starter', 'dish', 'dessert', 'drink']">
-        {{types[$index]}}
+    <div ng-if="menu.menus.length > 0">
+        <h2>Menus</h2>
+        <li ng-repeat="m in menu.menus">
+            <img ng-src="{{m.img}}" alt="{{m.name}}-img"/>
+            {{ m.name }}
+            <a ng-click="showMenu(m.id)">
+                go
+            </a>
+        </li>
+
+    </div>
+
+    <div ng-if="menu.starters.length > 0">
+        <h2>Entrées</h2>
         <ul>
-            <li ng-repeat="m in menu | filter:{type: type} as results">
-                <img ng-if="type != 'drink'" ng-src="{{m.img}}" alt="{{m.name}}-img"/>
+            <li ng-repeat="m in menu.starters">
+                <img ng-src="{{m.img}}" alt="{{m.name}}-img"/>
                 {{ m.name }}
-                <a href="" ng-click="cart.add(m.id, m.name, m.price, 1)">
+                <a href="" ng-click="cart.add(m.id, m.name, m.price, m)">
                     add to cart
                 </a>
             </li>
-            <li ng-if="results.length == 0">
-                <strong>No {{type}} found...</strong>
+        </ul>
+    </div>
+
+    <div ng-if="menu.dishes.length > 0">
+        <h2>Plats</h2>
+        <ul>
+            <li ng-repeat="m in menu.dishes">
+                <img ng-src="{{m.img}}" alt="{{m.name}}-img"/>
+                {{ m.name }}
+                <a href="" ng-click="cart.add(m.id, m.name, m.price, m)">
+                    add to cart
+                </a>
             </li>
         </ul>
     </div>
+
+    <div ng-if="menu.desserts.length > 0">
+        <h2>Desserts</h2>
+        <ul>
+            <li ng-repeat="m in menu.desserts">
+                <img ng-src="{{m.img}}" alt="{{m.name}}-img"/>
+                {{ m.name }}
+                <a href="" ng-click="cart.add(m.id, m.name, m.price, m)">
+                    add to cart
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <div ng-if="menu.drinks.length > 0">
+        <h2>Boissons</h2>
+        <ul>
+            <li ng-repeat="m in menu.drinks">
+                {{ m.name }}
+                <a href="" ng-click="cart.add(m.id, m.name, m.price, m)">
+                    add to cart
+                </a>
+            </li>
+        </ul>
+    </div>
+
     <a href="/#/cart" title="go to shopping cart" ng-disabled="cart.getTotalCount() < 1">
         <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
         <b>{{cart.getTotalCount()}}</b> items, <b>{{cart.getTotalPrice() | currency}}</b>

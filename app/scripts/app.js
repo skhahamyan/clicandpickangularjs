@@ -8,7 +8,7 @@
  *
  * Main module of the application.
  */
-angular
+var app = angular
     .module('clicandpickangularjsApp', [
         'ngAnimate',
         'ngCookies',
@@ -16,36 +16,44 @@ angular
         'ngRoute',
         'ngSanitize',
         'ngTouch',
-        'google.places',
-    ])
-    .config(function ($routeProvider) {
-        $routeProvider
-            .when('/', {
-                templateUrl: 'views/main.html',
-                controller: 'MainCtrl',
-                controllerAs: 'main'
-            })
-            .when('/s/:where', {
-                templateUrl: 'views/restaurants.html',
-                controller: 'RestaurantsCtrl',
-                controllerAs: 'restaurants'
-            })
-            .when('/restaurants/:restaurantId', {
-                templateUrl: 'views/restaurant.html',
-                controller: 'RestaurantCtrl',
-                controllerAs: 'restaurant'
-            })
-            .when('/cart', {
-                templateUrl: 'views/cart.html',
-                controller: 'CartCtrl',
-                controllerAs: 'cart'
-            })
-            .otherwise({
-                redirectTo: '/'
-            });
-    })
-    .factory('DataService', function (){
-        var cart = new ShoppingCart();
+        'ngMap',
+    ]);
 
-        return {cart: cart};
-    });
+app.config(function ($routeProvider) {
+    $routeProvider
+        .when('/', {
+            templateUrl: 'views/main.html',
+            controller: 'MainCtrl',
+            controllerAs: 'main'
+        })
+        .when('/s/:where', {
+            templateUrl: 'views/restaurants.html',
+            controller: 'RestaurantsCtrl',
+            controllerAs: 'restaurants'
+        })
+        .when('/restaurants/:restaurantId', {
+            templateUrl: 'views/restaurant.html',
+            controller: 'RestaurantCtrl',
+            controllerAs: 'restaurant'
+        })
+        .when('/cart', {
+            templateUrl: 'views/cart.html',
+            controller: 'CartCtrl',
+            controllerAs: 'cart'
+        })
+        .when('/restaurants/:restaurantId/menu/:menuId', {
+            templateUrl: 'views/menu.html',
+            controller: 'MenuCtrl',
+            controllerAs: 'menu'
+
+        })
+        .otherwise({
+            redirectTo: '/'
+        });
+});
+
+app.factory('DataService', function () {
+    var cart = new ShoppingCart();
+
+    return {cart: cart};
+});

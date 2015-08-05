@@ -1,7 +1,10 @@
 <form ng-submit="search()" class="form-inline">
+    <button type="button" class="btn btn-default">
+        <span class="glyphicon glyphicon-globe" ng-click="geolocation()" aria-hidden="true"></span>
+    </button>
     <div class="form-group">
         <label class="sr-only" for="place">Ou</label>
-        <input type="text" id="place" g-places-autocomplete force-selection="true" ng-model="where" placeholder="Où ?" class="form-control"
+        <input id="place" places-auto-complete types="['geocode']"  ng-model="where" placeholder="Où ?" class="form-control"
                required/>
     </div>
     <div class="form-group">
