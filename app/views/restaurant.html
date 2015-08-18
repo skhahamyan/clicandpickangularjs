@@ -17,7 +17,7 @@
             <li ng-repeat="m in menu.starters">
                 <img ng-src="{{m.img}}" alt="{{m.name}}-img"/>
                 {{ m.name }}
-                <a href="" ng-click="cart.add(m.id, m.name, m.price, m)">
+                <a href="" ng-click="cart.add(m.id, m.name, m.price, 1, m)">
                     add to cart
                 </a>
             </li>
@@ -30,7 +30,7 @@
             <li ng-repeat="m in menu.dishes">
                 <img ng-src="{{m.img}}" alt="{{m.name}}-img"/>
                 {{ m.name }}
-                <a href="" ng-click="cart.add(m.id, m.name, m.price, m)">
+                <a href="" ng-click="cart.add(m.id, m.name, m.price, 1, m)">
                     add to cart
                 </a>
             </li>
@@ -43,7 +43,7 @@
             <li ng-repeat="m in menu.desserts">
                 <img ng-src="{{m.img}}" alt="{{m.name}}-img"/>
                 {{ m.name }}
-                <a href="" ng-click="cart.add(m.id, m.name, m.price, m)">
+                <a href="" ng-click="cart.add(m.id, m.name, m.price, 1, m)">
                     add to cart
                 </a>
             </li>
@@ -55,7 +55,7 @@
         <ul>
             <li ng-repeat="m in menu.drinks">
                 {{ m.name }}
-                <a href="" ng-click="cart.add(m.id, m.name, m.price, m)">
+                <a href="" ng-click="cart.add(m.id, m.name, m.price, 1, m)">
                     add to cart
                 </a>
             </li>

@@ -81,3 +81,13 @@ body {
     border-bottom: 0;
   }
 }
+
+/*
+---------
+- Ajout -
+---------
+*/
+
+input[type="time"]::-webkit-clear-button{
+  display:none;
+}
